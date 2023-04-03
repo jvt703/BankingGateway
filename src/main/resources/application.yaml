@@ -1,0 +1,18 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: APIGateway
+  cloud:
+    gateway:
+      routes:
+
+        -id: account-service
+        uri:
+#        this will be the uri in the Eureka service I believe might be different we will update as
+#         we find out
+          lb://account-service
+        predicates:
+#          paths that will redirect to this service
+          -Path=/accounts/**
