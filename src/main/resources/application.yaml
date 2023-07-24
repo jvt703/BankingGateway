@@ -35,3 +35,13 @@ spring:
             -Path=/transaction/**
           filters:
             - name: JWTFilter
+        - id: internal-access-account
+          uri:
+            lb://account-service
+          predicates:
+            - Path=/internal/account/**
+        - id: internal-access-user
+          uri:
+            lb://user-service
+          predicates:
+            - Path=/internal/user/**
